@@ -27,12 +27,29 @@ const flashcardPairs = [
 ]
 
 const App = () => {
-  let [currCard, setCurrCard] = useState(flashcardPairs[Math.floor(Math.random() * flashcardPairs.length)]);
+  let [currCardIndex, setCurrCardIndex] = useState(0);
+  let [currCard, setCurrCard] = useState(flashcardPairs[currCardIndex]);
 
-  // Go to next card (random)
-  const changeCard = () => {
-    setCurrCard(currCard = flashcardPairs[Math.floor(Math.random() * flashcardPairs.length)]);
-    console.log(currCard)
+  // Go to previous card in order
+  const previousCard = () => {
+    if (currCardIndex == 0) {
+      setCurrCardIndex(currCardIndex = flashcardPairs.length - 1);
+    }
+    else {
+      setCurrCardIndex(currCardIndex--);
+    }
+    setCurrCard(currCard = flashcardPairs[currCardIndex]);
+  }
+
+  // Go to next card in order
+  const nextCard = () => {
+    if (currCardIndex == flashcardPairs.length - 1) {
+      setCurrCardIndex(currCardIndex = 0);
+    }
+    else {
+      setCurrCardIndex(currCardIndex++);
+    }
+    setCurrCard(currCard = flashcardPairs[currCardIndex]);
   }
 
   return (
@@ -45,7 +62,8 @@ const App = () => {
       </div>
 
       <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />
-      <button onClick={changeCard} title="Generate next flashcard">Next</button>
+      <button id='direction-button-previous' onClick={previousCard} title="Generate next flashcard">←</button>
+      <button id='direction-button-next' onClick={nextCard} title="Generate next flashcard">→</button>
     </div>
   )
 }
