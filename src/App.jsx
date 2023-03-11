@@ -1,5 +1,6 @@
 import React from 'react';
 import Flashcard from './components/Flashcard';
+import InputGroup from './components/InputGroup';
 import { useState } from 'react';
 
 // Flashcard pairs of picture/answers
@@ -27,18 +28,22 @@ const flashcardPairs = [
 ]
 
 const App = () => {
+  let [cardFlipped, setCardFlipped] = useState(false);
   let [currCardIndex, setCurrCardIndex] = useState(0);
   let [currCard, setCurrCard] = useState(flashcardPairs[currCardIndex]);
+  let [cardChanged, setCardChanged] = useState(false);
 
   // Go to previous card in order
   const previousCard = () => {
     if (currCardIndex == 0) {
-      setCurrCardIndex(currCardIndex = flashcardPairs.length - 1);
+      setCurrCardIndex(flashcardPairs.length - 1);
     }
     else {
       setCurrCardIndex(currCardIndex--);
     }
-    setCurrCard(currCard = flashcardPairs[currCardIndex]);
+    setCurrCard(flashcardPairs[currCardIndex]);
+    setCardFlipped(false);
+    setCardChanged(true);
   }
 
   // Go to next card in order
@@ -49,7 +54,14 @@ const App = () => {
     else {
       setCurrCardIndex(currCardIndex++);
     }
-    setCurrCard(currCard = flashcardPairs[currCardIndex]);
+    setCurrCard(flashcardPairs[currCardIndex]);
+    setCardFlipped(false);
+    setCardChanged(true)
+  }
+
+  // Check if the user already tried to see the answer
+  const detectFlip = () => {
+    setCardFlipped(true);
   }
 
   return (
@@ -58,10 +70,15 @@ const App = () => {
         <h1>What's This Dog?</h1>
         <h3>Do you consider yourself to be a guru in dog breeds? Play this game to find out how well you know dogs!</h3>
         <h3>Guess each dog's breed and then click on the card to check your answer!</h3>
-        <h3>Number of cards: {flashcardPairs.length}</h3>
       </div>
 
-      <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />
+      <div className='flashcard-container' onClick={detectFlip}>
+        <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />
+      </div>
+      
+      <InputGroup cardFlipped={cardFlipped} correctAnswer={currCard.breed} cardChanged={cardChanged} setCardChanged={setCardChanged} />
+
+      {/* Control buttons */}
       <button id='direction-button-previous' onClick={previousCard} title="Generate next flashcard">←</button>
       <button id='direction-button-next' onClick={nextCard} title="Generate next flashcard">→</button>
     </div>

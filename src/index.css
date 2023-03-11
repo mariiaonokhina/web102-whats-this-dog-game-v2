@@ -16,14 +16,11 @@ body {
 }
 
 .flashcard {
-    position: relative;
     display: flex;
     place-items: center;
     justify-content: center;
-    height: 62vh;
-    width: 75%;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 100%;
+    width: 100%;
     border: 1px black solid;
     border-radius: 25px;
     cursor: pointer;
@@ -51,12 +48,33 @@ body {
     background-color: rgba(255, 38, 0, 0.5);
 }
 
+#input-container {
+    margin-top: 1vh;
+    height: 30px;
+    width: auto;
+    display: flex;
+    place-content: center;
+}
+
+#input-box {
+    width: 20vw;
+}
+
+.flashcard-container {
+    height: 58vh;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+}
+
 #direction-button-previous, #direction-button-next {
     border: none;
     border-bottom: 3px black solid;
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     font-size: larger;
-    margin-top: 2vh;
+    margin-top: 1vh;
     height: 5vh;
     width: 10vw;
     background-color: rgba(217, 136, 227, 0.5);
@@ -80,4 +98,31 @@ body {
 #direction-button-previous:active, #direction-button-next:active {
     border-bottom: 1px black solid;
     transform: translateY(2px);
+}
+
+#submit-btn {
+    cursor: pointer;
+}
+
+.incorrect {
+    border: 3px red solid;
+}
+
+.correct {
+    border: 3px green solid;
+}
+
+.new {
+    border: 1px black solid;
+}
+
+#submit-btn {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    background-color: rgba(217, 136, 227, 0.5);
+    border: 1px black solid;
+    border-left: none;
+}
+
+#submit-btn:active {
+    filter: brightness(90%);
 }

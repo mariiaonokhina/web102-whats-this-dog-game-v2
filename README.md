@@ -4,14 +4,14 @@ Submitted by: **Mariia Onokhina**
 
 This web app: **contains a set of flashcards of dogs and their breeds to test the user's knowledge about dogs.**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] **The user can enter their guess in a box before seeing the flipside of the card**
-- [ ] **Clicking on a submit button shows visual feedback about whether the answer was correct or incorrect**
+- [X] **The user can enter their guess in a box before seeing the flipside of the card**
+- [X] **Clicking on a submit button shows visual feedback about whether the answer was correct or incorrect**
 - [X] **A back button is displayed on the card and can be used to return to the previous card in a set sequence**
 - [X] **A next button is displayed on the card and can be used to navigate to the next card in a set sequence**
 
