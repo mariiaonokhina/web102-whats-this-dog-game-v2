@@ -12,6 +12,7 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged,setCardChanged}) =>
         let answerLowerCase = correctAnswer.toLowerCase();
         const userGuessLowerCase = userGuess.toLowerCase();
         if (userGuessLowerCase.length == 0) {
+            alert('Please, put your answer in the input box below.');
             setAnswer('incorrect');
         }
         else if(cardFlipped == false && answerLowerCase.includes(userGuessLowerCase)) {
