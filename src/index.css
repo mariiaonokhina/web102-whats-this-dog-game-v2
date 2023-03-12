@@ -12,7 +12,7 @@ body {
 
 .game-description {
     height: fit-content;
-    line-height: 1.2em;
+    line-height: 1.5vh;
 }
 
 .flashcard {
@@ -100,7 +100,7 @@ body {
     transform: translateY(2px);
 }
 
-#submit-btn {
+#submit-btn, #shuffle-btn {
     cursor: pointer;
 }
 
@@ -116,7 +116,7 @@ body {
     border: 1px black solid;
 }
 
-#submit-btn {
+#submit-btn, #shuffle-btn {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     background-color: rgba(217, 136, 227, 0.5);
     border: 1px black solid;
@@ -125,4 +125,8 @@ body {
 
 #submit-btn:active {
     filter: brightness(90%);
+}
+
+#shuffle-btn {
+    font-size: larger;
 }

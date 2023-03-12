@@ -32,10 +32,25 @@ const App = () => {
   let [currCardIndex, setCurrCardIndex] = useState(0);
   let [currCard, setCurrCard] = useState(flashcardPairs[currCardIndex]);
   let [cardChanged, setCardChanged] = useState(false);
-  let [correctAnswerCount, setcorrectAnswerCount] = useState(0);
+  let [longestStreak, setLongestStreak] = useState(0);
+  let [currStreak, setCurrStreak] = useState(0);
+
+  const handleAddStreak = () => {
+    setCurrStreak(currStreak += 1);
+  }
+
+  const handleEndStreak = () => {
+    if (longestStreak < currStreak) {
+      setLongestStreak(currStreak)
+    }
+    setCurrStreak(0);
+  }
 
   // Go to previous card in order
   const previousCard = () => {
+    setCardFlipped(false);
+    setCardChanged(true);
+
     if (currCardIndex == 0) {
       setCurrCardIndex(flashcardPairs.length - 1);
     }
@@ -43,21 +58,20 @@ const App = () => {
       setCurrCardIndex(currCardIndex--);
     }
     setCurrCard(flashcardPairs[currCardIndex]);
-    setCardFlipped(false);
-    setCardChanged(true);
   }
 
   // Go to next card in order
   const nextCard = () => {
+    setCardFlipped(false);
+    setCardChanged(true);
+
     if (currCardIndex == flashcardPairs.length - 1) {
-      setCurrCardIndex(currCardIndex = 0);
+      setCurrCardIndex(0);
     }
     else {
       setCurrCardIndex(currCardIndex++);
     }
     setCurrCard(flashcardPairs[currCardIndex]);
-    setCardFlipped(false);
-    setCardChanged(true)
   }
 
   // Check if the user already tried to see the answer
@@ -83,6 +97,7 @@ const App = () => {
         <h1>What's This Dog?</h1>
         <h3>Do you consider yourself to be a guru in dog breeds? Play this game to find out how well you know dogs!</h3>
         <h3>Guess each dog's breed and then click on the card to check your answer!</h3>
+        <h3>Number of cards: {flashcardPairs.length} | Current streak: {currStreak} | Longest streak: {longestStreak}</h3>
       </div>
 
       <div className='flashcard-container' onClick={detectFlip}>
@@ -94,7 +109,9 @@ const App = () => {
       correctAnswer={currCard.breed} 
       cardChanged={cardChanged} 
       setCardChanged={setCardChanged} 
-      shuffleCards={shuffleCards}/>
+      shuffleCards={shuffleCards}
+      handleAddStreak={handleAddStreak}
+      handleEndStreak={handleEndStreak}/>
 
       {/* Control buttons */}
       <button id='direction-button-previous' onClick={previousCard} title="Generate next flashcard">←</button>

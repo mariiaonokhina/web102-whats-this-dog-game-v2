@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, shuffleCards}) => {
+const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, shuffleCards, handleAddStreak, handleEndStreak}) => {
     const [userGuess, setUserGuess] = useState('');
     let [answer, setAnswer] = useState('new');
 
@@ -17,15 +17,18 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, sh
 
         else if(cardFlipped == false && answerLowerCase.includes(userGuessLowerCase)) {
             setAnswer('correct');
+            handleAddStreak();
         }
 
         else if(cardFlipped == true && answerLowerCase.includes(userGuessLowerCase)) {
             alert('Correct answer, but you already saw it :)');
             setAnswer('correct');
+            handleAddStreak();
         }
         
         else {
             setAnswer('incorrect');
+            handleEndStreak();
         }
         setCardChanged(false);
     }
