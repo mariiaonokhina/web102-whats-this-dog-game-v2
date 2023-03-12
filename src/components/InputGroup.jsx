@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, shuffleCards, handleAddStreak, handleEndStreak}) => {
+const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, shuffleCards, handleAddStreak, handleEndStreak, removeMastered}) => {
     const [userGuess, setUserGuess] = useState('');
     let [answer, setAnswer] = useState('new');
 
@@ -40,8 +40,9 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, sh
             className={(answer == 'new' || cardChanged)? 'new': answer == 'correct'? 'correct': 'incorrect'}
             name='guess' 
             type='text' 
-            placeholder='Make a guess...'
-            onChange={handleChange}
+            placeholder='Make a guess...' 
+            title="Type your answer" 
+            onChange={handleChange} 
             />
 
             <button 
@@ -57,6 +58,14 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, sh
             title='Shuffle cards' 
             onClick={shuffleCards}>
                 🔄
+            </button>
+
+            <button
+            id='mastered-btn' 
+            type='button' 
+            title='Mastered this card? Remove it!' 
+            onClick={removeMastered}>
+                ⭐
             </button>
         </form>
     )

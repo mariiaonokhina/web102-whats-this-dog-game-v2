@@ -34,6 +34,7 @@ const App = () => {
   let [cardChanged, setCardChanged] = useState(false);
   let [longestStreak, setLongestStreak] = useState(0);
   let [currStreak, setCurrStreak] = useState(0);
+  let [numOfCards, setNumOfCards] = useState(flashcardPairs.length);
 
   const handleAddStreak = () => {
     setCurrStreak(currStreak += 1);
@@ -91,27 +92,36 @@ const App = () => {
     nextCard();
   }
 
+  const removeMastered = () => {
+    flashcardPairs.splice(currCardIndex, 1);
+    setNumOfCards(numOfCards -= 1);
+    nextCard();
+  }
+
   return (
     <div className='App'>
       <div className='game-description'>
         <h1>What's This Dog?</h1>
         <h3>Do you consider yourself to be a guru in dog breeds? Play this game to find out how well you know dogs!</h3>
         <h3>Guess each dog's breed and then click on the card to check your answer!</h3>
-        <h3>Number of cards: {flashcardPairs.length} | Current streak: {currStreak} | Longest streak: {longestStreak}</h3>
+        <h3>Number of cards: {numOfCards} | Current streak: {currStreak} | Longest streak: {longestStreak}</h3>
       </div>
 
       <div className='flashcard-container' onClick={detectFlip}>
-        <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />
+        {numOfCards == 0? <h1 id='good-job-msg'>Good job!</h1> : <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />}
       </div>
       
-      <InputGroup 
+      {numOfCards == 0? 
+      ""
+      : <InputGroup 
       cardFlipped={cardFlipped} 
       correctAnswer={currCard.breed} 
       cardChanged={cardChanged} 
       setCardChanged={setCardChanged} 
       shuffleCards={shuffleCards}
       handleAddStreak={handleAddStreak}
-      handleEndStreak={handleEndStreak}/>
+      handleEndStreak={handleEndStreak}
+      removeMastered={removeMastered}/>}
 
       {/* Control buttons */}
       <button id='direction-button-previous' onClick={previousCard} title="Generate next flashcard">←</button>

@@ -100,7 +100,7 @@ body {
     transform: translateY(2px);
 }
 
-#submit-btn, #shuffle-btn {
+#submit-btn, #shuffle-btn, #mastered-btn {
     cursor: pointer;
 }
 
@@ -116,7 +116,7 @@ body {
     border: 1px black solid;
 }
 
-#submit-btn, #shuffle-btn {
+#submit-btn, #shuffle-btn, #mastered-btn {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     background-color: rgba(217, 136, 227, 0.5);
     border: 1px black solid;
@@ -127,6 +127,15 @@ body {
     filter: brightness(90%);
 }
 
-#shuffle-btn {
+#shuffle-btn, #mastered-btn {
     font-size: larger;
+}
+
+#good-job-msg {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    position: relative;
+    display: flex;
+    place-self: center;
+    left: 50%;
+    transform: translateX(-50%);
 }
