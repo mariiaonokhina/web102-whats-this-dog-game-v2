@@ -53,12 +53,13 @@ const App = () => {
     setCardChanged(true);
 
     if (currCardIndex == 0) {
-      setCurrCardIndex(flashcardPairs.length - 1);
+      setCurrCardIndex(currCardIndex = flashcardPairs.length - 1);
     }
     else {
-      setCurrCardIndex(currCardIndex--);
+      setCurrCardIndex(currCardIndex -= 1);
     }
     setCurrCard(flashcardPairs[currCardIndex]);
+    console.log(currCardIndex);
   }
 
   // Go to next card in order
@@ -67,12 +68,13 @@ const App = () => {
     setCardChanged(true);
 
     if (currCardIndex == flashcardPairs.length - 1) {
-      setCurrCardIndex(0);
+      setCurrCardIndex(currCardIndex = 0);
     }
     else {
-      setCurrCardIndex(currCardIndex++);
+      setCurrCardIndex(currCardIndex += 1);
     }
     setCurrCard(flashcardPairs[currCardIndex]);
+    console.log(currCardIndex);
   }
 
   // Check if the user already tried to see the answer
