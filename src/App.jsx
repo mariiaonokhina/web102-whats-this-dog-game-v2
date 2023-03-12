@@ -32,6 +32,7 @@ const App = () => {
   let [currCardIndex, setCurrCardIndex] = useState(0);
   let [currCard, setCurrCard] = useState(flashcardPairs[currCardIndex]);
   let [cardChanged, setCardChanged] = useState(false);
+  let [correctAnswerCount, setcorrectAnswerCount] = useState(0);
 
   // Go to previous card in order
   const previousCard = () => {
@@ -64,6 +65,18 @@ const App = () => {
     setCardFlipped(true);
   }
 
+  // Shuffle flashcards and generate next card
+  const shuffleCards = () => {
+    for (let i = 0; i < flashcardPairs.length; i++) {
+      let randIndex = Math.floor(Math.random() * flashcardPairs.length);
+
+      let temp = flashcardPairs[randIndex];
+      flashcardPairs[randIndex] = flashcardPairs[i];
+      flashcardPairs[i] = temp;
+    }
+    nextCard();
+  }
+
   return (
     <div className='App'>
       <div className='game-description'>
@@ -76,7 +89,12 @@ const App = () => {
         <Flashcard answer={currCard.breed} question={currCard.picture} difficulty={currCard.difficulty} />
       </div>
       
-      <InputGroup cardFlipped={cardFlipped} correctAnswer={currCard.breed} cardChanged={cardChanged} setCardChanged={setCardChanged} />
+      <InputGroup 
+      cardFlipped={cardFlipped} 
+      correctAnswer={currCard.breed} 
+      cardChanged={cardChanged} 
+      setCardChanged={setCardChanged} 
+      shuffleCards={shuffleCards}/>
 
       {/* Control buttons */}
       <button id='direction-button-previous' onClick={previousCard} title="Generate next flashcard">←</button>

@@ -49,7 +49,7 @@ body {
 }
 
 #input-container {
-    margin-top: 1vh;
+    margin-top: 3vh;
     height: 30px;
     width: auto;
     display: flex;
@@ -74,7 +74,7 @@ body {
     border-bottom: 3px black solid;
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     font-size: larger;
-    margin-top: 1vh;
+    margin-top: 2vh;
     height: 5vh;
     width: 10vw;
     background-color: rgba(217, 136, 227, 0.5);

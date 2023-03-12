@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputGroup = ({cardFlipped, correctAnswer, cardChanged,setCardChanged}) => {
+const InputGroup = ({cardFlipped, correctAnswer, cardChanged, setCardChanged, shuffleCards}) => {
     const [userGuess, setUserGuess] = useState('');
     let [answer, setAnswer] = useState('new');
 
@@ -13,16 +13,17 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged,setCardChanged}) =>
         const userGuessLowerCase = userGuess.toLowerCase();
         if (userGuessLowerCase.length == 0) {
             alert('Please, put your answer in the input box below.');
-            setAnswer('incorrect');
         }
+
         else if(cardFlipped == false && answerLowerCase.includes(userGuessLowerCase)) {
             setAnswer('correct');
         }
+
         else if(cardFlipped == true && answerLowerCase.includes(userGuessLowerCase)) {
             alert('Correct answer, but you already saw it :)');
-            setAnswer('incorrect');
+            setAnswer('correct');
         }
-            
+        
         else {
             setAnswer('incorrect');
         }
@@ -39,11 +40,20 @@ const InputGroup = ({cardFlipped, correctAnswer, cardChanged,setCardChanged}) =>
             placeholder='Make a guess...'
             onChange={handleChange}
             />
+
             <button 
             id='submit-btn' 
             type='button' 
             onClick={handleGuess}>
                 Submit Guess
+            </button>
+
+            <button
+            id='shuffle-btn' 
+            type='button' 
+            title='Shuffle cards' 
+            onClick={shuffleCards}>
+                🔄
             </button>
         </form>
     )

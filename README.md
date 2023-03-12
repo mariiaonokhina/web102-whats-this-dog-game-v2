@@ -4,7 +4,7 @@ Submitted by: **Mariia Onokhina**
 
 This web app: **contains a set of flashcards of dogs and their breeds to test the user's knowledge about dogs.**
 
-Time spent: **4** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Required Features
 
@@ -24,7 +24,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [X] The game 'checks' for cheating. If you already peeked and saw the answer, the program will still mark it as correct, but will show a fun warning.
 
 ## Video Walkthrough
 
