@@ -4,7 +4,7 @@ Submitted by: **Mariia Onokhina**
 
 This web app: **contains a set of flashcards of dogs and their breeds to test the user's knowledge about dogs.**
 
-Time spent: **6** hours spent in total
+Time spent: **7** hours spent in total
 
 ## Required Features
 
